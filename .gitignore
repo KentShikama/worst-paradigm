@@ -1,3 +1,9 @@
+# Idea files
+
+*.iml
+*.iws
+*.ipr
+
 # web application files
 /web-app/WEB-INF/classes
 
@@ -26,3 +32,5 @@
 
 # "temporary" build files
 /target
+
+/.idea/
