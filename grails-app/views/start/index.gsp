@@ -29,7 +29,7 @@
                 <p>In order to participate in this experiment you must give your informed consent.  By clicking continue you indicate that you understand your role in this research and agree to participate.</p>
             </div><!--
         --><div class="col-xs-12 col-sm-10 col-md-5 vertical-align">
-            <g:form class="form-horizontal form-actions" controller="start" action="start">
+            <g:form class="form-horizontal form-actions" controller="start" action="jumpToInstructions">
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="age">Age:</label>
                     <g:select id="age" class="col-sm-9 selectpicker" data-live-search="true" name="age"
