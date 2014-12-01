@@ -12,6 +12,6 @@ class Person {
     ArrayList<String> listOfFalseWordsRecalled
     int numberOfTrueWordsRecalled
 
-    boolean didRecallCriticalLureInListOfWords
-    boolean didRecallCriticalLureInYesOrNoQuestions
+    boolean didRecallCriticalLureInFreeRecall
+    boolean didRecallCriticalLureInRecognition
 }

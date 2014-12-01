@@ -33,13 +33,13 @@ class DistractionController {
 
     private Object showNextQuestionOrRedirect(int count) {
         if (hasAnsweredEnoughQuestions(count)) {
-            render "Completed";
+            redirect(controller: 'recall', action: 'index');
         } else {
             return showNewQuestion();
         }
     }
     private boolean hasAnsweredEnoughQuestions(int count) {
-        count > 5
+        count > 1
     }
 
     private LinkedHashMap<String, Integer> showNewQuestion() {

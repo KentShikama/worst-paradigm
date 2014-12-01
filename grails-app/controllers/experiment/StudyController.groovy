@@ -2,13 +2,13 @@ package experiment
 
 class StudyController {
 
-    def itemService;
+    def personService;
 
     def lineDrawings() {
-        return [items: itemService.createItems()];
+        return [items: personService.createItems()];
     }
 
     def photographs() {
-        return [items: itemService.createItems()];
+        return [items: personService.createItems()];
     }
 }
