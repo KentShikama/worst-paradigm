@@ -11,9 +11,10 @@ class RecognitionController {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {
-            Set recalledWordList = grailsApplication.mainContext.getBean("sessionScopedService").recalledWords;
+            ArrayList recalledWordList = grailsApplication.mainContext.getBean("sessionScopedService").recalledWords;
             grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList = createRecognitionWordList(recalledWordList);
-            return [word: grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList.get(0)];
+            ArrayList recognitionWordList = grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList;
+            return [word: recognitionWordList.get(0)];
         }
     }
 
@@ -22,12 +23,14 @@ class RecognitionController {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {
-            List<String> recognitionWordList = grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList;
+            ArrayList<String> recognitionWordList = (ArrayList<String>) grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList;
             String wordShown = recognitionWordList.get(0);
             if (wordShown.equals("foot")) {
                 grailsApplication.mainContext.getBean("sessionScopedService").didRecallCriticalLureInRecognition = true;
+                redirect(controller: 'debriefing', action: 'index');
+                return;
             } else {
-                grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList = recognitionWordList.remove(0);
+                recognitionWordList.remove(0);
                 render(view: 'index', model: [word: grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList.get(0)]);
             }
         }
@@ -38,19 +41,20 @@ class RecognitionController {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {
-            List<String> recognitionWordList = grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList;
+            ArrayList<String> recognitionWordList = grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList;
             String wordShown = recognitionWordList.get(0);
             if (wordShown.equals("foot")) {
                 grailsApplication.mainContext.getBean("sessionScopedService").didRecallCriticalLureInRecognition = false;
-                redirect(controller: 'distraction', action: 'index');
+                redirect(controller: 'debriefing', action: 'index');
+                return;
             } else {
-                grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList = recognitionWordList.remove(0);
+                recognitionWordList.remove(0);
                 render(view: 'index', model: [word: grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList.get(0)]);
             }
         }
     }
 
-    Set createRecognitionWordList(Set recalledWordList) {
+    ArrayList<String> createRecognitionWordList(ArrayList<String> recalledWordList) {
         List<String> relatedWrongWordList = ["finger", "nail", "nose", "mile", "elbow", "leg", "knee", "calf", "flip flops", "cleats", "lips", "laces", "tights", "football", "rugby", "heel", "sole", "sweaty", "velcro", "throw", "catch"].toList();
         List<String> correctWordList = ["shoe", "hand", "toe", "kick", "sandals", "soccer", "yard", "walk", "ankle", "arm", "boot", "inch", "sock", "smell", "mouth"].toList();
         List<String> wordsNotRecalledList = buildWordsNotRecalledList(correctWordList, recalledWordList.toList());
@@ -59,7 +63,7 @@ class RecognitionController {
         Collections.shuffle(wordsNotRecalledList);
 
         ArrayList<String> combinedList = buildCombinedList(relatedWrongWordList, wordsNotRecalledList, correctWordList)
-        return new TreeSet(combinedList);
+        return combinedList;
     }
 
     private ArrayList<String> buildCombinedList(List<String> relatedWrongWordList, List<String> wordsNotRecalledList, List<String> correctWordList) {

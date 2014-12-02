@@ -14,9 +14,9 @@ class SessionScopedService {
 
     int distractionCount = 0;
 
-    Set<String> recalledWords;
+    ArrayList<String> recalledWords;
     boolean didRecallCriticalLureInFreeRecall;
 
-    List<String> recognitionWordList;
+    ArrayList<String> recognitionWordList;
     boolean didRecallCriticalLureInRecognition;
 }

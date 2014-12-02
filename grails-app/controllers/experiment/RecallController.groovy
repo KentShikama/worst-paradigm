@@ -11,7 +11,7 @@ class RecallController {
             return;
         } else {
             if (grailsApplication.mainContext.getBean("sessionScopedService").recalledWords == null || grailsApplication.mainContext.getBean("sessionScopedService").recalledWords.isEmpty()) {
-                grailsApplication.mainContext.getBean("sessionScopedService").recalledWords = new TreeSet<String>();
+                grailsApplication.mainContext.getBean("sessionScopedService").recalledWords = new ArrayList<String>();
             }
             return [recalledWords: grailsApplication.mainContext.getBean("sessionScopedService").recalledWords];
         }

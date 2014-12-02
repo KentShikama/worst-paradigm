@@ -10,17 +10,15 @@ class PersonService {
         Person person = new Person(id: id, age: age, gender: gender, studyType: studyType,
                 listOfTrueWordsRecalled: listOfTrueWordsRecalled, listOfFalseWordsRecalled: listOfFalseWordsRecalled,
                 numberOfTrueWordsRecalled: numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall: didRecallCriticalLureInFreeRecall);
-        person.save(flush: true, failOnError: true);
         return person;
     }
 
-    Person createPerson(String id, int age, String gender,
+    Person createPerson(String id, int age, String gender, String studyType,
                         ArrayList<String> listOfTrueWordsRecalled, ArrayList<String> listOfFalseWordsRecalled,
                         int numberOfTrueWordsRecalled, boolean didRecallCriticalLureInFreeRecall, boolean didRecallCriticalLureInRecognition) {
-        Person person = new Person(id: id, age: age, String: gender,
+        Person person = new Person(id: id, age: age, gender: gender, studyType: studyType,
                 listOfTrueWordsRecalled: listOfTrueWordsRecalled, listOfFalseWordsRecalled: listOfFalseWordsRecalled,
                 numberOfTrueWordsRecalled: numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall: didRecallCriticalLureInFreeRecall, didRecallCriticalLureInRecognition: didRecallCriticalLureInRecognition);
-        person.save();
         return person;
     }
 
