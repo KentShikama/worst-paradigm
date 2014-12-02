@@ -2,9 +2,16 @@ package experiment
 
 class InstructionsController {
 
-    def cookieService;
+    def sessionScopedServiceProxy;
 
-    def index() {}
+    def index() {
+        if (sessionScopedServiceProxy.finished) {
+            redirect(controller: 'debriefing', action: 'index');
+            return;
+        } else {
+            return;
+        }
+    }
 
     def jumpToStudy() {
         redirectToEitherStudy();
@@ -12,10 +19,10 @@ class InstructionsController {
 
     private void redirectToEitherStudy() {
         if (Math.random() < 0.5) {
-            cookieService.setCookie("studyType","lineDrawings");
+            sessionScopedServiceProxy.studyType = 'lineDrawings';
             redirect(controller: 'study', action: 'lineDrawings');
         } else {
-            cookieService.setCookie("studyType","photographs");
+            sessionScopedServiceProxy.studyType = 'photographs';
             redirect(controller: 'study', action: 'photographs');
         }
     }

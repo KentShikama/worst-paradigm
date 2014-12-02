@@ -2,17 +2,23 @@ package experiment;
 
 class StartController {
 
-    def cookieService;
+    def sessionScopedServiceProxy;
 
-    def index() {}
+    def index() {
+        if (sessionScopedServiceProxy.finished) {
+            redirect(controller: 'debriefing', action: 'index');
+        } else {
+            return;
+        }
+    }
 
     def jumpToInstructions() {
-        String id = request.getRemoteAddr() + Calendar.getInstance().time.getDateTimeString();
-        String age = params.age;
+        String id = request.getRemoteAddr();
+        int age = Integer.valueOf(params.age);
         String gender = params.gender;
-        cookieService.setCookie("sessionID",id);
-        cookieService.setCookie("age", age);
-        cookieService.setCookie("gender", gender);
+        sessionScopedServiceProxy.id = id;
+        sessionScopedServiceProxy.age = age;
+        sessionScopedServiceProxy.gender = gender;
         redirect(controller: 'instructions', action: 'index');
     }
 }

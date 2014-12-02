@@ -3,12 +3,23 @@ package experiment
 class StudyController {
 
     def personService;
+    def sessionScopedServiceProxy;
 
     def lineDrawings() {
-        return [items: personService.createItems()];
+        if (sessionScopedServiceProxy.finished) {
+            redirect(controller: 'debriefing', action: 'index');
+            return;
+        } else {
+            return [items: personService.createItems()];
+        }
     }
 
     def photographs() {
-        return [items: personService.createItems()];
+        if (sessionScopedServiceProxy.finished) {
+            redirect(controller: 'debriefing', action: 'index');
+            return;
+        } else {
+            return [items: personService.createItems()];
+        }
     }
 }

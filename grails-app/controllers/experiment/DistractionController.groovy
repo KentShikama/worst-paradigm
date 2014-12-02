@@ -5,18 +5,24 @@ class DistractionController {
     int firstNumber;
     int secondNumber;
 
-    int count = 0;
-
+    def sessionScopedServiceProxy;
+    
     def index() {
-        if (count == 0) {
-            return showFirstQuestionAndIncrementCount();
+        if (sessionScopedServiceProxy.finished) {
+            redirect(controller: 'debriefing', action: 'index');
+            return;
         } else {
-            return checkAnswerAndContinue();
+            String answer = params.answer;
+            if (answer == null || answer.isEmpty()) {
+                return showFirstQuestionAndIncrementCount();
+            } else {
+                return checkAnswerAndContinue();
+            }
         }
     }
 
     private LinkedHashMap<String, Integer> showFirstQuestionAndIncrementCount() {
-        count++;
+        sessionScopedServiceProxy.distractionCount++;
         return showNewQuestion();
     }
 
@@ -24,8 +30,8 @@ class DistractionController {
         int enteredAnswer = Integer.valueOf(params.answer);
         int trueAnswer = firstNumber + secondNumber;
         if (enteredAnswer == trueAnswer) {
-            count++;
-            return showNextQuestionOrRedirect(count)
+            sessionScopedServiceProxy.distractionCount++;
+            return showNextQuestionOrRedirect(sessionScopedServiceProxy.distractionCount)
         } else {
             return showSameQuestion(enteredAnswer);
         }

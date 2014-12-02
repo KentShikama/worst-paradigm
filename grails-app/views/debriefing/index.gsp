@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-7 vertical-align">
                 <h2>Explanation</h2>
-                <g:if test="${you.studyType == 'linedrawings'}">
+                <g:if test="${you.studyType == 'lineDrawings'}">
                     <p>This experiment was designed to test the frequency of false memories in relationship to the detail of pictures given to participants. Your group was shown line drawings, while another group was shown photographs.</p>
                 </g:if>
                 <g:else>

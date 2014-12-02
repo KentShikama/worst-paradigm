@@ -5,8 +5,15 @@ class RecallController {
     private static final String CRITICAL_LURE = "foot";
     Set<String> recalledWords = new TreeSet<String>();
 
+    def sessionScopedServiceProxy;
+
     def index() {
-        [recalledWords: recalledWords];
+        if (sessionScopedServiceProxy.finished) {
+            redirect(controller: 'debriefing', action: 'index');
+            return;
+        } else {
+            return [recalledWords: recalledWords];
+        }
     }
 
     def addWord() {
@@ -30,10 +37,13 @@ class RecallController {
     def submit() {
         for (String word : recalledWords) {
             if (word.equals(CRITICAL_LURE)) {
-                redirect(controller: 'debriefing', action: 'fromRecall', params: [recalledWords: recalledWords]);
+                sessionScopedServiceProxy.recalledWords = recalledWords;
+                sessionScopedServiceProxy.didRecallCriticalLureInFreeRecall = true;
+                redirect(controller: 'debriefing', action: 'index');
                 return;
             }
         }
-        redirect(controller: 'recognition', action: 'index', params: [recalledWords: recalledWords]);
+        sessionScopedServiceProxy.didRecallCriticalLureInFreeRecall = false;
+        redirect(controller: 'recognition', action: 'index');
     }
 }
