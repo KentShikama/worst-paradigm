@@ -6,7 +6,8 @@ class StudyController {
     def grailsApplication;
 
     def lineDrawings() {
-        if (grailsApplication.mainContext.getBean("sessionScopedService").finished) {
+        def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService")
+        if (sessionScopedService.finished) {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {
@@ -15,7 +16,8 @@ class StudyController {
     }
 
     def photographs() {
-        if (grailsApplication.mainContext.getBean("sessionScopedService").finished) {
+        def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService")
+        if (sessionScopedService.finished) {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {

@@ -6,44 +6,48 @@ class RecallController {
     def grailsApplication;
 
     def index() {
-        if (grailsApplication.mainContext.getBean("sessionScopedService").finished) {
+        def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService");
+        if (sessionScopedService.finished) {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {
-            if (grailsApplication.mainContext.getBean("sessionScopedService").recalledWords == null || grailsApplication.mainContext.getBean("sessionScopedService").recalledWords.isEmpty()) {
-                grailsApplication.mainContext.getBean("sessionScopedService").recalledWords = new ArrayList<String>();
+            if (sessionScopedService.recalledWords == null || sessionScopedService.recalledWords.isEmpty()) {
+                sessionScopedService.recalledWords = new ArrayList<String>();
             }
-            return [recalledWords: grailsApplication.mainContext.getBean("sessionScopedService").recalledWords];
+            return [recalledWords: sessionScopedService.recalledWords];
         }
     }
 
     def addWord() {
+        def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService");
         String recalledWord = params.word;
-        grailsApplication.mainContext.getBean("sessionScopedService").recalledWords.add(recalledWord);
+        sessionScopedService.recalledWords.add(recalledWord);
         redirect(action: 'index');
     }
 
     def deleteWord() {
+        def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService");
         String wordToDelete = params.word;
         Set<String> newRecalledWords = new TreeSet<String>();
-        for (String word : grailsApplication.mainContext.getBean("sessionScopedService").recalledWords) {
+        for (String word : sessionScopedService.recalledWords) {
             if (!wordToDelete.equals(word)) {
                 newRecalledWords.add(word);
             }
         }
-        grailsApplication.mainContext.getBean("sessionScopedService").recalledWords = newRecalledWords;
+        sessionScopedService.recalledWords = newRecalledWords;
         redirect(action: 'index');
     }
 
     def submit() {
-        for (String word : grailsApplication.mainContext.getBean("sessionScopedService").recalledWords) {
+        def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService");
+        for (String word : sessionScopedService.recalledWords) {
             if (word.equals(CRITICAL_LURE)) {
-                grailsApplication.mainContext.getBean("sessionScopedService").didRecallCriticalLureInFreeRecall = true;
+                sessionScopedService.didRecallCriticalLureInFreeRecall = true;
                 redirect(controller: 'debriefing', action: 'index');
                 return;
             }
         }
-        grailsApplication.mainContext.getBean("sessionScopedService").didRecallCriticalLureInFreeRecall = false;
+        sessionScopedService.didRecallCriticalLureInFreeRecall = false;
         redirect(controller: 'recognition', action: 'index');
     }
 }

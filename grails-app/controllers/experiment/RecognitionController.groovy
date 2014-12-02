@@ -7,49 +7,52 @@ class RecognitionController {
     def grailsApplication;
 
     def index() {
-        if (grailsApplication.mainContext.getBean("sessionScopedService").finished) {
+        def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService");
+        if (sessionScopedService.finished) {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {
-            ArrayList recalledWordList = grailsApplication.mainContext.getBean("sessionScopedService").recalledWords;
-            grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList = createRecognitionWordList(recalledWordList);
-            ArrayList recognitionWordList = grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList;
+            ArrayList recalledWordList = sessionScopedService.recalledWords;
+            sessionScopedService.recognitionWordList = createRecognitionWordList(recalledWordList);
+            ArrayList recognitionWordList = sessionScopedService.recognitionWordList;
             return [word: recognitionWordList.get(0)];
         }
     }
 
     def yes() {
-        if (grailsApplication.mainContext.getBean("sessionScopedService").finished) {
+        def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService");
+        if (sessionScopedService.finished) {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {
-            ArrayList<String> recognitionWordList = (ArrayList<String>) grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList;
+            ArrayList<String> recognitionWordList = (ArrayList<String>) sessionScopedService.recognitionWordList;
             String wordShown = recognitionWordList.get(0);
             if (wordShown.equals("foot")) {
-                grailsApplication.mainContext.getBean("sessionScopedService").didRecallCriticalLureInRecognition = true;
+                sessionScopedService.didRecallCriticalLureInRecognition = true;
                 redirect(controller: 'debriefing', action: 'index');
                 return;
             } else {
                 recognitionWordList.remove(0);
-                render(view: 'index', model: [word: grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList.get(0)]);
+                render(view: 'index', model: [word: sessionScopedService.recognitionWordList.get(0)]);
             }
         }
     }
 
     def no() {
-        if (grailsApplication.mainContext.getBean("sessionScopedService").finished) {
+        def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService");
+        if (sessionScopedService.finished) {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {
-            ArrayList<String> recognitionWordList = grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList;
+            ArrayList<String> recognitionWordList = sessionScopedService.recognitionWordList;
             String wordShown = recognitionWordList.get(0);
             if (wordShown.equals("foot")) {
-                grailsApplication.mainContext.getBean("sessionScopedService").didRecallCriticalLureInRecognition = false;
+                sessionScopedService.didRecallCriticalLureInRecognition = false;
                 redirect(controller: 'debriefing', action: 'index');
                 return;
             } else {
                 recognitionWordList.remove(0);
-                render(view: 'index', model: [word: grailsApplication.mainContext.getBean("sessionScopedService").recognitionWordList.get(0)]);
+                render(view: 'index', model: [word: sessionScopedService.recognitionWordList.get(0)]);
             }
         }
     }
