@@ -9,11 +9,12 @@
 <html>
 <head>
     <title>Debriefing</title>
+    <asset:stylesheet src="application.css"/>
+    <asset:javascript src="application.js"/>
 </head>
 
 <body>
 <h1>Debriefing</h1>
-
 <div class="vertical-center">
     <div class="container">
         <div class="row">
@@ -38,6 +39,7 @@
                     <th>Study Type</th>
                     <th>Number of True Words</th>
                     <th>Critical Lure Recalled</th>
+                    <th>Critical Lure Recognized</th>
                 </tr>
                 <g:each var="person" in="${people}">
                     <tr>
@@ -47,6 +49,7 @@
                         <td>${person.studyType}</td>
                         <td>${person.numberOfTrueWordsRecalled}</td>
                         <td>${person.didRecallCriticalLureInFreeRecall}</td>
+                        <td>${person.didRecallCriticalLureInRecognition}</td>
                     </tr>
                 </g:each>
             </table>

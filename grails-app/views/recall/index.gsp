@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Free Recall Test</title>
+    <asset:stylesheet src="application.css"/>
+    <asset:javascript src="application.js"/>
 </head>
 
 <body>

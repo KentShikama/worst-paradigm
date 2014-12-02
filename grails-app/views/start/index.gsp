@@ -38,7 +38,7 @@
                               from="${13..99}" value="${age}"/>
                 </div>
 
-                <div class="spacing"></div>
+                <div class="spacing20"></div>
 
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="gender">Gender:</label>
@@ -46,7 +46,7 @@
                               from="['Male', 'Female', 'N/A']" value="${gender}"/>
                 </div>
 
-                <div class="spacing"></div>
+                <div class="spacing20"></div>
 
                 <g:submitButton class="btn btn-default" name="submit" value="Continue"/>
             </g:form>
