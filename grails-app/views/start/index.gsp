@@ -18,15 +18,17 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-7 vertical-align">
-                <p>You will be participating in a study that is being run as a part of a project for the Introduction to Cognitive Science Course at Pomona College.  This study is designed to _____.  The procedures will involve _____.  The whole process will take _____ minutes to complete.</p>
+                <p>You will be participating in a study that is being run as a part of a project for the Introduction to Cognitive Science course at Pomona College.  This study is designed to test the effects of the detail of visual stimuli on memory.  The procedures will involve a series of pictures, simple math problems (addition), and a memory test.  The whole process will take between five and ten minutes to complete.</p>
 
                 <p>Although this experiment involves no foreseeable risks, if at any time you want to stop the experiment you are free to refuse further participation without penalty.  You may ask questions at any time.</p>
 
+                <p>Although this experiment involves no foreseeable risks, if at any time you want to stop the experiment you are free to refuse further participation without penalty. You may do so by simply closing the browser window.</p>
+
                 <p>All results will remain strictly confidential.  Your name will not be linked to any data collected during this experiment.</p>
 
-                <p>If you have any further questions about this research either now or at a later time, please contact [your name] at [your email].  You may also contact the instructor for the course: Laura Johnson at laura.johnson@pomona.edu.</p>
+                <p>If you have any questions about this research either now or at a later time, please contact: Jordan Wong at jordan.wong@pomona.edu. You may also contact the instructor for the course: Laura Johnson at laura.johnson@pomona.edu.</p>
 
-                <p>In order to participate in this experiment you must give your informed consent.  By clicking continue you indicate that you understand your role in this research and agree to participate.</p>
+                <p>In order to participate in this experiment you must give your informed consent.  By clicking continue on this page, you indicate that you understand your role in this research and agree to participate.</p>
             </div><!--
         --><div class="col-xs-12 col-sm-10 col-md-5 vertical-align">
             <g:form class="form-horizontal form-actions" controller="start" action="jumpToInstructions">

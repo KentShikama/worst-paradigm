@@ -18,10 +18,8 @@ class DebriefingController {
         int numberOfTrueWordsRecalled = listOfTrueWordsRecalled.size();
         boolean didRecallCriticalLureInFreeRecall = true;
 
-        personService.createPerson(id, age, gender, studyType, listOfTrueWordsRecalled, listOfFalseWordsRecalled, numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall);
+        Person you = personService.createPerson(id, age, gender, studyType, listOfTrueWordsRecalled, listOfFalseWordsRecalled, numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall);
 
-
-        System.out.println(Person.list().size());
-        render(view: "index", model: [people: Person.list()]);
+        render(view: "index", model: [people: Person.list(), you: you]);
     }
 }
