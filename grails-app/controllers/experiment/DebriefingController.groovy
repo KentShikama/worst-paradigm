@@ -26,7 +26,7 @@ class DebriefingController {
             you = personService.createPerson(id, age, gender, studyType, listOfTrueWordsRecalled, listOfFalseWordsRecalled, numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall, didRecallCriticalLureInRecognition);
         }
         if (!grailsApplication.mainContext.getBean("sessionScopedService").finished) {
-            you.save(flush: true, failOnError: true);
+            you.save();
             grailsApplication.mainContext.getBean("sessionScopedService").finished = true;
         }
         render(view: "index", model: [people: Person.list(), you: you]);
