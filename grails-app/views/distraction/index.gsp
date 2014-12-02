@@ -16,23 +16,32 @@
 <body>
 <div class="vertical-center">
     <div class="container">
-    <table align="center">
-        <tr>
-            <td><h1>&nbsp</h1></td>
-            <td><h1>${firstNumber}</h1></td>
-        </tr>
-        <tr>
-            <td><h1>+</h1></td>
-            <td><h1>${secondNumber}</h1></td>
-        </tr>
-    </table>
-    <g:form class="form-horizontal form-actions" action="index">
-        <g:textField name="answer"/>
-        <g:submitButton class="btn btn-default" name="submit" value="Submit"/>
-    </g:form>
-    <g:if test="${errorMessage}">
-        <p>${errorMessage}</p>
-    </g:if>
+        <table align="center">
+            <tr>
+                <td><h1>&nbsp</h1></td>
+                <td><h1>${firstNumber}</h1></td>
+            </tr>
+            <tr>
+                <td><h1>+</h1></td>
+                <td><h1>${secondNumber}</h1></td>
+            </tr>
+        </table>
+        <hr/>
+        <div class="spacing20"></div>
+        <div>
+            <g:form class="form-inline form-actions" action="index">
+                <div class="form-group padding10" style="margin-top: 2px;">
+                    <g:textField name="answer"/>
+                </div>
+
+                <div class="form-group padding10">
+                    <g:submitButton class="btn btn-default" name="submit" value="Submit"/>
+                </div>
+            </g:form>
+            <g:if test="${errorMessage}">
+                <p class="spacing20" align="center">${errorMessage}</p>
+            </g:if>
+        </div>
     </div>
 </div>
 </body>

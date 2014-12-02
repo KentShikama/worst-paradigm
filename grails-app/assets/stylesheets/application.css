@@ -13,6 +13,10 @@
 *= require_self
 */
 
+.padding10 {
+    padding: 10px;
+}
+
 .spacing20 {
     margin: 20px;
 }
