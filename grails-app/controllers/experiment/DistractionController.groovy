@@ -5,10 +5,10 @@ class DistractionController {
     int firstNumber;
     int secondNumber;
 
-    def sessionScopedServiceProxy;
+    def grailsApplication;
     
     def index() {
-        if (sessionScopedServiceProxy.finished) {
+        if (grailsApplication.mainContext.getBean("sessionScopedService").finished) {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {
@@ -22,7 +22,7 @@ class DistractionController {
     }
 
     private LinkedHashMap<String, Integer> showFirstQuestionAndIncrementCount() {
-        sessionScopedServiceProxy.distractionCount++;
+        grailsApplication.mainContext.getBean("sessionScopedService").distractionCount++;
         return showNewQuestion();
     }
 
@@ -30,8 +30,8 @@ class DistractionController {
         int enteredAnswer = Integer.valueOf(params.answer);
         int trueAnswer = firstNumber + secondNumber;
         if (enteredAnswer == trueAnswer) {
-            sessionScopedServiceProxy.distractionCount++;
-            return showNextQuestionOrRedirect(sessionScopedServiceProxy.distractionCount)
+            grailsApplication.mainContext.getBean("sessionScopedService").distractionCount++;
+            return showNextQuestionOrRedirect(grailsApplication.mainContext.getBean("sessionScopedService").distractionCount)
         } else {
             return showSameQuestion(enteredAnswer);
         }

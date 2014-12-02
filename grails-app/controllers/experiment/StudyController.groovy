@@ -3,10 +3,10 @@ package experiment
 class StudyController {
 
     def personService;
-    def sessionScopedServiceProxy;
+    def grailsApplication;
 
     def lineDrawings() {
-        if (sessionScopedServiceProxy.finished) {
+        if (grailsApplication.mainContext.getBean("sessionScopedService").finished) {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {
@@ -15,7 +15,7 @@ class StudyController {
     }
 
     def photographs() {
-        if (sessionScopedServiceProxy.finished) {
+        if (grailsApplication.mainContext.getBean("sessionScopedService").finished) {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {

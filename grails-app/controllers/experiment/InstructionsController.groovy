@@ -2,10 +2,10 @@ package experiment
 
 class InstructionsController {
 
-    def sessionScopedServiceProxy;
+    def grailsApplication;
 
     def index() {
-        if (sessionScopedServiceProxy.finished) {
+        if (grailsApplication.mainContext.getBean("sessionScopedService").finished) {
             redirect(controller: 'debriefing', action: 'index');
             return;
         } else {
@@ -19,10 +19,10 @@ class InstructionsController {
 
     private void redirectToEitherStudy() {
         if (Math.random() < 0.5) {
-            sessionScopedServiceProxy.studyType = 'lineDrawings';
+            grailsApplication.mainContext.getBean("sessionScopedService").studyType = 'lineDrawings';
             redirect(controller: 'study', action: 'lineDrawings');
         } else {
-            sessionScopedServiceProxy.studyType = 'photographs';
+            grailsApplication.mainContext.getBean("sessionScopedService").studyType = 'photographs';
             redirect(controller: 'study', action: 'photographs');
         }
     }

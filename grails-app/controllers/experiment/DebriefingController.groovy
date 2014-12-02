@@ -3,30 +3,30 @@ package experiment
 class DebriefingController {
 
     def personService;
-    def sessionScopedServiceProxy;
-
+    def grailsApplication;
+    
     def index() {
-        String id = sessionScopedServiceProxy.id;
-        int age = sessionScopedServiceProxy.age;
-        String gender = sessionScopedServiceProxy.gender;
-        String studyType = sessionScopedServiceProxy.studyType;
+        String id = grailsApplication.mainContext.getBean("sessionScopedService").id;
+        int age = grailsApplication.mainContext.getBean("sessionScopedService").age;
+        String gender = grailsApplication.mainContext.getBean("sessionScopedService").gender;
+        String studyType = grailsApplication.mainContext.getBean("sessionScopedService").studyType;
 
-        Set<String> recalledWords = sessionScopedServiceProxy.recalledWords;
+        Set<String> recalledWords = grailsApplication.mainContext.getBean("sessionScopedService").recalledWords;
         ArrayList<String> listOfTrueWordsRecalled = new ArrayList<>(personService.buildWordsCorrectlyRecalledList(recalledWords.toList()));
         ArrayList<String> listOfFalseWordsRecalled = new ArrayList<>(personService.buildWordsIncorrectlyRecalledList(recalledWords.toList()));
         int numberOfTrueWordsRecalled = listOfTrueWordsRecalled.size();
 
-        boolean didRecallCriticalLureInFreeRecall = sessionScopedServiceProxy.didRecallCriticalLureInFreeRecall;
+        boolean didRecallCriticalLureInFreeRecall = grailsApplication.mainContext.getBean("sessionScopedService").didRecallCriticalLureInFreeRecall;
 
         Person you;
         if (didRecallCriticalLureInFreeRecall) {
             you = personService.createPerson(id, age, gender, studyType, listOfTrueWordsRecalled, listOfFalseWordsRecalled, numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall);
         } else {
-            boolean didRecallCriticalLureInRecognition = sessionScopedServiceProxy.didRecallCriticalLureInRecognition;
+            boolean didRecallCriticalLureInRecognition = grailsApplication.mainContext.getBean("sessionScopedService").didRecallCriticalLureInRecognition;
             you = personService.createPerson(id, age, gender, studyType, listOfTrueWordsRecalled, listOfFalseWordsRecalled, numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall, didRecallCriticalLureInRecognition);
         }
 
-        sessionScopedServiceProxy.finished = true;
+        grailsApplication.mainContext.getBean("sessionScopedService").finished = true;
 
         render(view: "index", model: [people: Person.list(), you: you]);
     }

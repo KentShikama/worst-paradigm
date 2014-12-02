@@ -2,10 +2,10 @@ package experiment;
 
 class StartController {
 
-    def sessionScopedServiceProxy;
+    def grailsApplication;
 
     def index() {
-        if (sessionScopedServiceProxy.finished) {
+        if (grailsApplication.mainContext.getBean("sessionScopedService").finished) {
             redirect(controller: 'debriefing', action: 'index');
         } else {
             return;
@@ -16,9 +16,9 @@ class StartController {
         String id = request.getRemoteAddr();
         int age = Integer.valueOf(params.age);
         String gender = params.gender;
-        sessionScopedServiceProxy.id = id;
-        sessionScopedServiceProxy.age = age;
-        sessionScopedServiceProxy.gender = gender;
+        grailsApplication.mainContext.getBean("sessionScopedService").id = id;
+        grailsApplication.mainContext.getBean("sessionScopedService").age = age;
+        grailsApplication.mainContext.getBean("sessionScopedService").gender = gender;
         redirect(controller: 'instructions', action: 'index');
     }
 }
