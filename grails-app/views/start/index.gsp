@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Memory Experiment</title>
+    <title>Worst Paradigm</title>
     <asset:stylesheet src="application.css"/>
     <asset:javascript src="application.js"/>
 </head>
