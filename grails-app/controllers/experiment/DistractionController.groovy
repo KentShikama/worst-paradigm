@@ -48,7 +48,7 @@ class DistractionController {
         }
     }
     private boolean hasAnsweredEnoughQuestions(int count) {
-        count > 1
+        count > 5
     }
 
     private LinkedHashMap<String, Integer> showNewQuestion() {
