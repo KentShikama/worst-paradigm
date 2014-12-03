@@ -6,7 +6,7 @@
 <body>
 <g:each var="item" in="${items}">
     <asset:assetPathExists src="${item.photographURL}">
-        <li><asset:image src="${item.photographURL}"/></li>
+        <li style="list-style: none;"><asset:image class="shadow600" src="${item.photographURL}"/></li>
     </asset:assetPathExists>
 </g:each>
 </body>

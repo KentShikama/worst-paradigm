@@ -36,9 +36,9 @@
                 </g:if>
                 </p>
 
-                <p>Our original list of words includes shoe, hand, toe, kick, sandals, soccer, yard, walk, ankle, arm, boot, inch, sock, smell, and mouth. You successfully recalled ${you.numberOfTrueWordsRecalled} out of 15 items in the list.</p>
+                <p>Our original list of words includes shoe, hand, toe, kick, sandals, soccer, yard, walk, ankle, arm, boot, inch, sock, smell, and mouth. You successfully recalled ${you.numberOfTrueWordsRecalled} out of 15 items in the list. Note that we have given credit for either plural or singular versions of the word and <a href="${createLink(controller: 'debriefing', action: 'substitute')}">a list of possible substitutes.</a></p>
 
-                <p>On the graph adjacent you can see the current results of our experiment. There have been ${numberOfParticipants} participants so far. We are looking to see if there is a statistically significant difference in the number of people who either recalled or recognized the lure word between the line drawing and the photograph group. If you are interested in our findings at a later time, or (again) you have any concerns about what happened during the experiment, you may contact Jordan Wong at jordan.wong@pomona.edu. If you have any issues with the website itself, please contact Kent Shikama at info@worstparadigm.com.</p>
+                <p>On the graph adjacent you can see the current results of our experiment. There have been ${numberOfParticipants} participants so far. We are looking to see if there is a statistically significant difference in the number of people who either recalled or recognized the lure word between the line drawing and the photograph group. If you are interested in our findings at a later time, or (again) you have any concerns about what happened during the experiment, you may contact Jordan Wong at jordan.wong@pomona.edu. If you have any issues with the website itself, please contact Kent Shikama at worstparadigm@gmail.com</p>
             </div><!--
         --><div class="col-xs-12 col-sm-12 col-md-5 vertical-align">
             <div style="max-width: 400px; margin: 0 auto;">

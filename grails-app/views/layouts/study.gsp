@@ -19,12 +19,19 @@
             });
         })
     </script>
+    <asset:stylesheet src="application.css"/>
 </head>
 
 <body>
-<ul id="fade">
-    <g:layoutBody/>
-</ul>
+<div class="vertical-center">
+    <div class="container">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <ul id="fade">
+                <g:layoutBody/>
+            </ul>
+        </div>
+    </div>
+</div>
 <a style="display:none" id="linkToDistractionTask" href="${createLink(controller: 'distraction', action: 'index')}"/>
 </body>
 </html>

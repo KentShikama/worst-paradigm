@@ -25,7 +25,7 @@ class PersonService {
     List<Item> createItems() {
         List<Item> itemList = new ArrayList<>();
         for (String word: correctWordList) {
-            Item item = new Item(word: word, lineDrawingURL: word + "-linedrawing.png", photographURL: word + "-photograph.png");
+            Item item = new Item(word: word, lineDrawingURL: word + "-linedrawing.jpg", photographURL: word + "-photograph.jpg");
             itemList.add(item);
         }
         return itemList;

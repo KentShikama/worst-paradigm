@@ -77,7 +77,7 @@ class RecognitionController {
 
     ArrayList<String> createRecognitionWordList(ArrayList<String> recalledWordList) {
         List<String> relatedWrongWordList = ["finger", "nail", "nose", "mile", "elbow", "leg", "knee", "calf", "cleats", "lips", "laces", "tights", "football", "rugby", "heel", "sole", "sweaty", "velcro", "throw", "catch"].toList();
-        List<String> correctWordList = ["shoe", "hand", "toe", "kick", "sandals", "soccer", "yard", "walk", "ankle", "arm", "boot", "inch", "sock", "smell", "mouth"].toList();
+        List<String> correctWordList = ["shoe", "hand", "toe", "kick", "sandal", "soccer", "yard", "walk", "ankle", "arm", "boot", "inch", "sock", "smell", "mouth"].toList();
         List<String> wordsNotRecalledList = buildWordsNotRecalledList(correctWordList, recalledWordList.toList());
 
         Collections.shuffle(relatedWrongWordList);
@@ -111,11 +111,20 @@ class RecognitionController {
 
     private List<String> buildWordsNotRecalledList(List<String> correctWordList, List<String> recalledWordList) {
         List<String> wordsNotRecalledList = new ArrayList<String>();
+        Map<String, List<String>> interpretationList = buildInterpretationMap();
         for (String word : correctWordList) {
             boolean didRecallWord = false;
+            List<String> interpretations = interpretationList.get(word);
             for (String recalledWord : recalledWordList) {
-                if (recalledWord.equals(word)) {
+                if (recalledWord.contains(word)) {
                     didRecallWord = true;
+                }
+                if (interpretations != null || !interpretations.isEmpty()) {
+                    for (String interpretation : interpretations) {
+                        if (recalledWord.contains(interpretation)) {
+                            didRecallWord = true;
+                        }
+                    }
                 }
             }
             if (!didRecallWord) {
@@ -123,5 +132,18 @@ class RecognitionController {
             }
         }
         return wordsNotRecalledList;
+    }
+
+    private Map<String, List<String>> buildInterpretationMap() {
+        Map<String, List<String>> interpretationList = new HashMap<>();
+        interpretationList.put("arm", ["flexing", "muscle"].toList());
+        interpretationList.put("boot", ["boots", "rainboot"].toList());
+        interpretationList.put("hand", ["palm", "wave"].toList());
+        interpretationList.put("inch", ["ruler"].toList());
+        interpretationList.put("mouth", ["talk", "sing"].toList());
+        interpretationList.put("smell", ["sniff"].toList());
+        interpretationList.put("toe", ["big toe"].toList());
+        interpretationList.put("walk", ["skate, exercise"].toList());
+        return interpretationList;
     }
 }
