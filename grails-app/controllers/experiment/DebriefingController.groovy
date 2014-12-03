@@ -42,12 +42,11 @@ class DebriefingController {
 
     def substitute() {
         File file = grailsResourceLocator.findResourceForURI('pdf/identification.pdf').file;
-        System.out.println(file.lastModified());
         if (file.exists()) {
             response.setContentType("application/octet-stream")
             response.setHeader("Content-disposition", "filename=${file.name}")
             response.outputStream << file.bytes
         }
-        redirect(view: 'index');
+        return;
     }
 }
