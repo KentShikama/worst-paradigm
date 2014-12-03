@@ -31,7 +31,7 @@
         <div>
             <g:form class="form-inline form-actions" action="index">
                 <div class="form-group padding10" style="margin-top: 2px;">
-                    <g:textField name="answer"/>
+                    <g:textField id="textField" name="answer" />
                 </div>
 
                 <div class="form-group padding10">

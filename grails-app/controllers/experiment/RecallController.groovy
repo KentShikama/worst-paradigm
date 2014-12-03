@@ -21,7 +21,8 @@ class RecallController {
     def addWord() {
         def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService");
         String recalledWord = params.word;
-        sessionScopedService.recalledWords.add(recalledWord);
+        String recalledWordFormatted = recalledWord.toLowerCase().trim();
+        sessionScopedService.recalledWords.add(recalledWordFormatted);
         redirect(action: 'index');
     }
 

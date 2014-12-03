@@ -15,7 +15,13 @@ class RecognitionController {
             ArrayList recalledWordList = sessionScopedService.recalledWords;
             sessionScopedService.recognitionWordList = createRecognitionWordList(recalledWordList);
             ArrayList recognitionWordList = sessionScopedService.recognitionWordList;
-            return [word: recognitionWordList.get(0)];
+            String typeOfImage = sessionScopedService.studyType;
+            if (typeOfImage.equals("lineDrawing")) {
+                typeOfImage = "line drawing";
+            } else {
+                typeOfImage = "photograph";
+            }
+            return [typeOfImage: typeOfImage, word: recognitionWordList.get(0)];
         }
     }
 
@@ -33,7 +39,13 @@ class RecognitionController {
                 return;
             } else {
                 recognitionWordList.remove(0);
-                render(view: 'index', model: [word: sessionScopedService.recognitionWordList.get(0)]);
+                String typeOfImage = sessionScopedService.studyType;
+                if (typeOfImage.equals("lineDrawing")) {
+                    typeOfImage = "line drawing";
+                } else {
+                    typeOfImage = "photograph";
+                }
+                render(view: 'index', model: [typeOfImage: typeOfImage, word: sessionScopedService.recognitionWordList.get(0)]);
             }
         }
     }
@@ -52,7 +64,13 @@ class RecognitionController {
                 return;
             } else {
                 recognitionWordList.remove(0);
-                render(view: 'index', model: [word: sessionScopedService.recognitionWordList.get(0)]);
+                String typeOfImage = sessionScopedService.studyType;
+                if (typeOfImage.equals("lineDrawing")) {
+                    typeOfImage = "line drawing";
+                } else {
+                    typeOfImage = "photograph";
+                }
+                render(view: 'index', model: [typeOfImage: typeOfImage, word: sessionScopedService.recognitionWordList.get(0)]);
             }
         }
     }
