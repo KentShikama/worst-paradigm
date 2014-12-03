@@ -58,4 +58,28 @@ class PersonService {
         }
         return wordsIncorrectlyRecalled;
     }
+
+    int getNumberOfLineDrawingParticipantsWhoRecalledOrRecognizedLureWord(List<Person> personList) {
+        int count = 0;
+        for (Person person : personList) {
+            if (person.studyType.equals("lineDrawings")) {
+                if (person.didRecallCriticalLureInFreeRecall || person.didRecallCriticalLureInRecognition) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    int getNumberOfPhotographParticipantsWhoRecalledOrRecognizedLureWord(List<Person> personList) {
+        int count = 0;
+        for (Person person : personList) {
+            if (person.studyType.equals("photographs")) {
+                if (person.didRecallCriticalLureInFreeRecall || person.didRecallCriticalLureInRecognition) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
 }

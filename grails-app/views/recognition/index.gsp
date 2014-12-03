@@ -13,7 +13,7 @@
     <asset:javascript src="application.js"/>
 </head>
 
-<body>
+<body
 <div class="vertical-center">
     <div class="container">
         <div style="max-width: 600px; margin: 0 auto;">

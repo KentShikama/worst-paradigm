@@ -5,6 +5,9 @@
 // You're free to add application-wide JavaScript to this file, but it's generally better 
 // to create separate JavaScript files as needed.
 //
+//= require RGraph.common.core
+//= require RGraph.drawing.yaxis
+//= require RGraph.bar
 //= require jquery-2.1.1.min
 //= require bootstrap.min
 //= require bootstrap-select

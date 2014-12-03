@@ -31,6 +31,11 @@ class DebriefingController {
             you.save();
             sessionScopedService.finished = true;
         }
-        render(view: "index", model: [people: Person.list(), you: you]);
+
+        int lineDrawingNumber = personService.getNumberOfLineDrawingParticipantsWhoRecalledOrRecognizedLureWord(Person.list());
+        int photographNumber = personService.getNumberOfPhotographParticipantsWhoRecalledOrRecognizedLureWord(Person.list());
+        int numberOfParticipants = Person.list().size();
+
+        render(view: "index", model: [people: Person.list(), you: you, lineDrawingNumber: lineDrawingNumber, photographNumber: photographNumber, numberOfParticipants: numberOfParticipants]);
     }
 }
