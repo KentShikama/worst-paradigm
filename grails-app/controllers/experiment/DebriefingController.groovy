@@ -4,7 +4,8 @@ class DebriefingController {
 
     def personService;
     def grailsApplication;
-    
+    def grailsResourceLocator;
+
     def index() {
         def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService");
 
@@ -37,5 +38,16 @@ class DebriefingController {
         int numberOfParticipants = Person.list().size();
 
         render(view: "index", model: [people: Person.list(), you: you, lineDrawingNumber: lineDrawingNumber, photographNumber: photographNumber, numberOfParticipants: numberOfParticipants]);
+    }
+
+    def substitute() {
+        File file = grailsResourceLocator.findResourceForURI('pdf/identification.pdf').file;
+        System.out.println(file.lastModified());
+        if (file.exists()) {
+            response.setContentType("application/octet-stream")
+            response.setHeader("Content-disposition", "filename=${file.name}")
+            response.outputStream << file.bytes
+        }
+        redirect(view: 'index');
     }
 }
