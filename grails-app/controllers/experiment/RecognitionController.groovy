@@ -119,7 +119,7 @@ class RecognitionController {
                 if (recalledWord.contains(word)) {
                     didRecallWord = true;
                 }
-                if (interpretations != null || !interpretations.isEmpty()) {
+                if (interpretations != null && !interpretations.isEmpty()) {
                     for (String interpretation : interpretations) {
                         if (recalledWord.contains(interpretation)) {
                             didRecallWord = true;
