@@ -19,7 +19,7 @@
         <div style="max-width: 500px; margin: 0 auto;">
             <h1>Free Recall Test</h1>
 
-            <p>Please type in descriptions of all the images you can recall into the textfield below. Use only one word to describe each image. You do not have to recall the images in order. If you make a mistake you can delete a word/description by clicking the 'x' button next to each word. When you are finished, please click the 'I cannot recall any more words' button below.</p>
+            <p>Please provide a one-to-two-word description of each image you can recall in the textfield below (e.g. 'umbrella,' or 'tennis player'). You do not have to recall the images in order. If you make a mistake you can delete a word/description by clicking the 'x' button next to each word. When you are finished, please click the 'I cannot recall any more words' button below.</p>
         </div>
 
         <div class="spacing20"></div>
@@ -27,7 +27,7 @@
         <g:form class="form-inline form-actions">
             <div class="form-group padding10" style="margin-top: 2px;">
                 <g:if test="${recalledWords == null || recalledWords.isEmpty()}">
-                    <g:textField name="word" id="textField" value="Type word and hit enter"/>
+                    <g:textField name="word" id="textField" value="Type word and hit enter" onfocus="if (this.value == 'Type word and hit enter') {this.value=''}"/>
                 </g:if>
                 <g:else>
                     <g:textField name="word" id="textField"/>

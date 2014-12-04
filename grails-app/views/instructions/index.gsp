@@ -18,7 +18,7 @@
     <div style="max-width: 500px; margin: 0 auto;">
         <h1>Instructions</h1>
 
-        <p>You will now be shown a series of fifteen pictures, with each flashed for about a second. Try to remember as many as you can. Afterwards, you will be asked to recall as many words from the list as you can, in no particular order.</p>
+        <p>You will now be shown a series of fifteen images where each will be flashed for about a second. Try to remember as many as you can. Afterwards, you will be asked to recall as many images from the series as you can, in no particular order.</p>
 
         <p>You may continue whenever you are ready.</p>
 
