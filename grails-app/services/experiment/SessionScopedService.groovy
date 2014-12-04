@@ -6,7 +6,7 @@ class SessionScopedService {
 
     boolean finished = false;
 
-    String id;
+    String address;
     int age;
     String gender;
 
