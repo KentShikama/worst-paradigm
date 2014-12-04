@@ -9,7 +9,7 @@ class DebriefingController {
     def index() {
         def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService");
 
-        String id = sessionScopedService.id;
+        String address = sessionScopedService.address;
         int age = sessionScopedService.age;
         String gender = sessionScopedService.gender;
         String studyType = sessionScopedService.studyType;
@@ -23,10 +23,10 @@ class DebriefingController {
 
         Person you;
         if (didRecallCriticalLureInFreeRecall) {
-            you = personService.createPerson(id, age, gender, studyType, listOfTrueWordsRecalled, listOfFalseWordsRecalled, numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall);
+            you = personService.createPerson(address, age, gender, studyType, listOfTrueWordsRecalled, listOfFalseWordsRecalled, numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall);
         } else {
             boolean didRecallCriticalLureInRecognition = sessionScopedService.didRecallCriticalLureInRecognition;
-            you = personService.createPerson(id, age, gender, studyType, listOfTrueWordsRecalled, listOfFalseWordsRecalled, numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall, didRecallCriticalLureInRecognition);
+            you = personService.createPerson(address, age, gender, studyType, listOfTrueWordsRecalled, listOfFalseWordsRecalled, numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall, didRecallCriticalLureInRecognition);
         }
         if (!sessionScopedService.finished) {
             you.save();

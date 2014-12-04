@@ -4,19 +4,19 @@ class PersonService {
 
     List<String> correctWordList = ["shoe","hand","toe","kick","sandals","soccer","yard","walk","ankle","arm","boot","inch","sock","smell","mouth"].toList();
 
-    Person createPerson(String id, int age, String gender, String studyType,
+    Person createPerson(String address, int age, String gender, String studyType,
                      ArrayList<String> listOfTrueWordsRecalled, ArrayList<String> listOfFalseWordsRecalled,
                      int numberOfTrueWordsRecalled, boolean didRecallCriticalLureInFreeRecall) {
-        Person person = new Person(id: id, age: age, gender: gender, studyType: studyType,
+        Person person = new Person(address: address, age: age, gender: gender, studyType: studyType,
                 listOfTrueWordsRecalled: listOfTrueWordsRecalled, listOfFalseWordsRecalled: listOfFalseWordsRecalled,
                 numberOfTrueWordsRecalled: numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall: didRecallCriticalLureInFreeRecall);
         return person;
     }
 
-    Person createPerson(String id, int age, String gender, String studyType,
+    Person createPerson(String address, int age, String gender, String studyType,
                         ArrayList<String> listOfTrueWordsRecalled, ArrayList<String> listOfFalseWordsRecalled,
                         int numberOfTrueWordsRecalled, boolean didRecallCriticalLureInFreeRecall, boolean didRecallCriticalLureInRecognition) {
-        Person person = new Person(id: id, age: age, gender: gender, studyType: studyType,
+        Person person = new Person(address: address, age: age, gender: gender, studyType: studyType,
                 listOfTrueWordsRecalled: listOfTrueWordsRecalled, listOfFalseWordsRecalled: listOfFalseWordsRecalled,
                 numberOfTrueWordsRecalled: numberOfTrueWordsRecalled, didRecallCriticalLureInFreeRecall: didRecallCriticalLureInFreeRecall, didRecallCriticalLureInRecognition: didRecallCriticalLureInRecognition);
         return person;

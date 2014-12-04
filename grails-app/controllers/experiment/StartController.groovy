@@ -15,10 +15,10 @@ class StartController {
 
     def jumpToInstructions() {
         def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService")
-        String id = request.getRemoteAddr();
+        String address = request.getRemoteAddr();
         int age = Integer.valueOf(params.age);
         String gender = params.gender;
-        sessionScopedService.id = id;
+        sessionScopedService.address = address;
         sessionScopedService.age = age;
         sessionScopedService.gender = gender;
         redirect(controller: 'instructions', action: 'index');

@@ -26,7 +26,7 @@
     </tr>
     <g:each var="person" in="${people}">
         <tr>
-            <td>${person.id}</td>
+            <td>${person.address}</td>
             <td>${person.age}</td>
             <td>${person.gender}</td>
             <td>${person.studyType}</td>

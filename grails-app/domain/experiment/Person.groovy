@@ -1,7 +1,7 @@
 package experiment
 
 class Person {
-    String id
+    String address
 
     int age
     String gender
