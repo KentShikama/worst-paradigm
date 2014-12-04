@@ -3,9 +3,8 @@ dataSource {
     jmxExport = true
     driverClassName = "com.mysql.jdbc.Driver"
     dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-    username = "root"
-   ***REMOVED***
 }
+
 hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = false
@@ -20,7 +19,7 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop"
-            url = "jdbc:mysql://localhost/worst_paradigm_pilot?useUnicode=yes&characterEncoding=UTF-8"
+            url = "jdbc:mysql://localhost:8889/worst_paradigm_pilot"
             username = "root"
            ***REMOVED***
         }
@@ -28,7 +27,7 @@ environments {
     test {
         dataSource {
             dbCreate = "create-drop"
-            url = "jdbc:mysql://localhost/worst_paradigm_pilot?useUnicode=yes&characterEncoding=UTF-8"
+            url = "jdbc:mysql://localhost:8889/worst_paradigm_pilot"
             username = "root"
            ***REMOVED***
         }
@@ -39,6 +38,20 @@ environments {
             url = "jdbc:mysql://localhost/worst_paradigm_pilot?useUnicode=yes&characterEncoding=UTF-8"
             username = "root"
            ***REMOVED***
+            properties {
+                maxActive = 40
+                maxIdle = 20
+                minIdle = 5
+                maxWait = 10000
+                initialSize = 5
+                minEvictableIdleTimeMillis = 1000 * 30
+                timeBetweenEvictionRunsMillis = 1000 * 5
+                numTestsPerEvictionRun = 50
+                testOnBorrow = true
+                testWhileIdle = true
+                testOnReturn = true
+                validationQuery = "SELECT 1"
+            }
         }
     }
 }
