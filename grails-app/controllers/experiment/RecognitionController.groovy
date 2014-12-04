@@ -77,7 +77,7 @@ class RecognitionController {
 
     ArrayList<String> createRecognitionWordList(ArrayList<String> recalledWordList) {
         List<String> relatedWrongWordList = ["finger", "nail", "nose", "mile", "elbow", "leg", "knee", "calf", "cleats", "lips", "laces", "tights", "football", "rugby", "heel", "sole", "sweaty", "velcro", "throw", "catch"].toList();
-        List<String> correctWordList = ["shoe", "hand", "toe", "kick", "sandal", "soccer", "yard", "walk", "ankle", "arm", "boot", "inch", "sock", "smell", "mouth"].toList();
+        List<String> correctWordList = ["shoe", "hand", "toe", "kick", "sandals", "soccer", "yard", "walk", "ankle", "arm", "boot", "inch", "sock", "smell", "mouth"].toList();
         List<String> wordsNotRecalledList = buildWordsNotRecalledList(correctWordList, recalledWordList.toList());
 
         Collections.shuffle(relatedWrongWordList);
@@ -111,7 +111,7 @@ class RecognitionController {
 
     private List<String> buildWordsNotRecalledList(List<String> correctWordList, List<String> recalledWordList) {
         List<String> wordsNotRecalledList = new ArrayList<String>();
-        Map<String, List<String>> interpretationList = buildInterpretationMap();
+        Map<String, List<String>> interpretationList = personService.buildInterpretationMap();
         for (String word : correctWordList) {
             boolean didRecallWord = false;
             List<String> interpretations = interpretationList.get(word);
@@ -132,23 +132,5 @@ class RecognitionController {
             }
         }
         return wordsNotRecalledList;
-    }
-
-    private Map<String, List<String>> buildInterpretationMap() {
-        Map<String, List<String>> interpretationList = new HashMap<>();
-        interpretationList.put("arm", ["flex", "muscle"].toList());
-        interpretationList.put("boot", ["shoes","rainboot"].toList());
-        interpretationList.put("hand", ["palm", "wave"].toList());
-        interpretationList.put("inch", ["paper clip","measure","ruler"].toList());
-        interpretationList.put("kick", ["soccer","shoot","goal","shot"].toList());
-        interpretationList.put("mouth", ["talk", "sing","lips","yawn","tongue"].toList());
-        interpretationList.put("shoe", ["sneaker"].toList());
-        interpretationList.put("sandal", ["flip flop","shoes"].toList());
-        interpretationList.put("smell", ["sniff","flower","nose"].toList());
-        interpretationList.put("sock", ["stocking"].toList());
-        interpretationList.put("toe", ["big toe"].toList());
-        interpretationList.put("walk", ["skate, exercise","friends","guy","moving"].toList());
-        interpretationList.put("yard", ["meter"].toList());
-        return interpretationList;
     }
 }

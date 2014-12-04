@@ -18,12 +18,7 @@
     <div class="container">
         <div style="max-width: 600px; margin: 0 auto;">
             <h3 style="text-align: center">
-                <g:if test="${word.endsWith("s")}">
-                    Do you recall seeing a ${typeOfImage} of ${word}?
-                </g:if>
-                <g:else>
-                    Do you recall seeing a ${typeOfImage} of a ${word}?
-                </g:else>
+                Do you recall seeing a ${typeOfImage} of the word ${word}?
             </h3>
 
             <div class="spacing50"></div>
