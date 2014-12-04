@@ -20,8 +20,6 @@
             <div class="col-xs-12 col-sm-12 col-md-7 vertical-align">
                 <p>You will be participating in a study that is being run as a part of a project for the Introduction to Cognitive Science course at Pomona College.  This study is designed to test the effects of the detail of visual stimuli on memory.  The procedures will involve a series of pictures, simple math problems (addition), and a memory test.  The whole process will take between five and ten minutes to complete.</p>
 
-                <p>Although this experiment involves no foreseeable risks, if at any time you want to stop the experiment you are free to refuse further participation without penalty.  You may ask questions at any time.</p>
-
                 <p>Although this experiment involves no foreseeable risks, if at any time you want to stop the experiment you are free to refuse further participation without penalty. You may do so by simply closing the browser window.</p>
 
                 <p>All results will remain strictly confidential.  Your name will not be linked to any data collected during this experiment.</p>

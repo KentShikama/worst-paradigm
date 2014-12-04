@@ -5,6 +5,7 @@ class RecognitionController {
     private static final int SHORTENED_LIST_LENGTH = 8;
 
     def grailsApplication;
+    def personService;
 
     def index() {
         def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService");
