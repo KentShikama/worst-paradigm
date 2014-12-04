@@ -136,14 +136,19 @@ class RecognitionController {
 
     private Map<String, List<String>> buildInterpretationMap() {
         Map<String, List<String>> interpretationList = new HashMap<>();
-        interpretationList.put("arm", ["flexing", "muscle"].toList());
-        interpretationList.put("boot", ["boots", "rainboot"].toList());
+        interpretationList.put("arm", ["flex", "muscle"].toList());
+        interpretationList.put("boot", ["shoes","rainboot"].toList());
         interpretationList.put("hand", ["palm", "wave"].toList());
-        interpretationList.put("inch", ["ruler"].toList());
-        interpretationList.put("mouth", ["talk", "sing"].toList());
-        interpretationList.put("smell", ["sniff"].toList());
+        interpretationList.put("inch", ["paper clip","measure","ruler"].toList());
+        interpretationList.put("kick", ["soccer","shoot","goal","shot"].toList());
+        interpretationList.put("mouth", ["talk", "sing","lips","yawn","tongue"].toList());
+        interpretationList.put("shoe", ["sneaker"].toList());
+        interpretationList.put("sandal", ["flip flop","shoes"].toList());
+        interpretationList.put("smell", ["sniff","flower","nose"].toList());
+        interpretationList.put("sock", ["stocking"].toList());
         interpretationList.put("toe", ["big toe"].toList());
-        interpretationList.put("walk", ["skate, exercise"].toList());
+        interpretationList.put("walk", ["skate, exercise","friends","guy","moving"].toList());
+        interpretationList.put("yard", ["meter"].toList());
         return interpretationList;
     }
 }
