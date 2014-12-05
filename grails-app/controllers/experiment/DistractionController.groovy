@@ -24,7 +24,11 @@ class DistractionController {
 
     private LinkedHashMap<String, Integer> showFirstQuestionAndIncrementCount() {
         def sessionScopedService = grailsApplication.mainContext.getBean("sessionScopedService")
-        sessionScopedService.distractionCount++;
+        if (sessionScopedService.distractionCount == 0) {
+            sessionScopedService.distractionCount++;
+        } else {
+            showSameQuestion(0);
+        }
         return showNewQuestion();
     }
 
