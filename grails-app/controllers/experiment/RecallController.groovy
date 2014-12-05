@@ -23,7 +23,15 @@ class RecallController {
         String recalledWord = params.word;
         String recalledWordFormatted = recalledWord.toLowerCase().trim();
         if (!recalledWordFormatted.isEmpty()) {
-            sessionScopedService.recalledWords.add(recalledWordFormatted);
+            boolean isNewWord = true;
+            for (String wordsRecalledSoFar : sessionScopedService.recalledWords) {
+                if (recalledWord.equals(wordsRecalledSoFar)) {
+                    isNewWord = false;
+                }
+            }
+            if (isNewWord) {
+                sessionScopedService.recalledWords.add(recalledWordFormatted);
+            }
         }
         redirect(action: 'index');
     }
