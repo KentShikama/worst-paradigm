@@ -110,7 +110,7 @@ class PersonService {
         interpretationList.put("kick", ["soccer","shoot","goal","shot","beckham"].toList());
         interpretationList.put("mouth", ["talk", "sing","lips","yawn","tongue"].toList());
         interpretationList.put("shoe", ["sneaker"].toList());
-        interpretationList.put("sandals", ["flip flop","shoes"].toList());
+        interpretationList.put("sandals", ["flip flop","shoes","sandal"].toList());
         interpretationList.put("smell", ["sniff","flower","nose"].toList());
         interpretationList.put("sock", ["stocking"].toList());
         interpretationList.put("toe", ["big toe"].toList());
