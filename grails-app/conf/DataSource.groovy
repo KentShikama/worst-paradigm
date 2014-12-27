@@ -27,7 +27,7 @@ environments {
     test {
         dataSource {
             dbCreate = "create-drop"
-            url = "jdbc:mysql://localhost:8889/worst_paradigm_pilot"
+            url = "jdbc:mysql://localhost/worst_paradigm_pilot?useUnicode=yes&characterEncoding=UTF-8"
             username = "root"
            ***REMOVED***
         }
